@@ -1,0 +1,182 @@
+{
+  "experiment": "gru_remaining_count_v1",
+  "created_at": "2026-10-17T16:09:23.163951+00:00",
+  "history_start": "2025-11-02T05:12:00+00:00",
+  "history_end": "2026-10-16T16:00:00+00:00",
+  "history_posts": 13490,
+  "event_slug": "elon-musk-of-tweets-october-16-october-23-2026",
+  "event_alignment": "2026-10-16T16:00:00+00:00",
+  "event_duration_hours": 168.0,
+  "interval_source": "config\\elon-musk-oct-16-23-2026-intervals.json",
+  "config": {
+    "pre_event_days": 28,
+    "observation_hours": [
+      0,
+      24,
+      42,
+      84,
+      126
+    ],
+    "training_step_days": [
+      4,
+      3
+    ],
+    "folds": 3,
+    "evaluation_events_per_fold": 4,
+    "embargo_days": 7,
+    "hidden_size": 16,
+    "mixture_components": 2,
+    "max_remaining": 700,
+    "epochs": 180,
+    "patience": 25,
+    "batch_size": 64,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "rps_weight": 0.5,
+    "seed": 20261017
+  },
+  "device": "cuda",
+  "torch_version": "2.14.1+cu130",
+  "cuda_version": "13.0",
+  "cuda_device": "NVIDIA GeForce RTX 3060",
+  "folds": [
+    {
+      "fold": 0,
+      "train_label_cutoff": "2026-06-12T16:00:00+00:00",
+      "validation_starts": [
+        "2026-06-19T16:00:00+00:00",
+        "2026-06-26T16:00:00+00:00",
+        "2026-07-03T16:00:00+00:00",
+        "2026-07-10T16:00:00+00:00"
+      ],
+      "test_starts": [
+        "2026-07-24T16:00:00+00:00",
+        "2026-07-31T16:00:00+00:00",
+        "2026-08-07T16:00:00+00:00",
+        "2026-08-14T16:00:00+00:00"
+      ]
+    },
+    {
+      "fold": 1,
+      "train_label_cutoff": "2026-07-10T16:00:00+00:00",
+      "validation_starts": [
+        "2026-07-17T16:00:00+00:00",
+        "2026-07-24T16:00:00+00:00",
+        "2026-07-31T16:00:00+00:00",
+        "2026-08-07T16:00:00+00:00"
+      ],
+      "test_starts": [
+        "2026-08-21T16:00:00+00:00",
+        "2026-08-28T16:00:00+00:00",
+        "2026-09-04T16:00:00+00:00",
+        "2026-09-11T16:00:00+00:00"
+      ]
+    },
+    {
+      "fold": 2,
+      "train_label_cutoff": "2026-08-07T16:00:00+00:00",
+      "validation_starts": [
+        "2026-08-14T16:00:00+00:00",
+        "2026-08-21T16:00:00+00:00",
+        "2026-08-28T16:00:00+00:00",
+        "2026-09-04T16:00:00+00:00"
+      ],
+      "test_starts": [
+        "2026-09-18T16:00:00+00:00",
+        "2026-09-25T16:00:00+00:00",
+        "2026-10-02T16:00:00+00:00",
+        "2026-10-09T16:00:00+00:00"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "fold": 0,
+      "model": "mlp_nb_nll",
+      "seed": 20261017,
+      "parameters": 666,
+      "best_epoch": 20,
+      "epochs_ran": 45,
+      "weights": "fold-0\\mlp_nb_nll.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_nb_nll",
+      "seed": 20261018,
+      "parameters": 5350,
+      "best_epoch": 15,
+      "epochs_ran": 40,
+      "weights": "fold-0\\dual_gru_nb_nll.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_nb_rps",
+      "seed": 20261019,
+      "parameters": 5350,
+      "best_epoch": 18,
+      "epochs_ran": 43,
+      "weights": "fold-0\\dual_gru_nb_rps.pt"
+    },
+    {
+      "fold": 1,
+      "model": "mlp_nb_nll",
+      "seed": 20261117,
+      "parameters": 666,
+      "best_epoch": 126,
+      "epochs_ran": 151,
+      "weights": "fold-1\\mlp_nb_nll.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_nb_nll",
+      "seed": 20261118,
+      "parameters": 5350,
+      "best_epoch": 68,
+      "epochs_ran": 93,
+      "weights": "fold-1\\dual_gru_nb_nll.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_nb_rps",
+      "seed": 20261119,
+      "parameters": 5350,
+      "best_epoch": 79,
+      "epochs_ran": 104,
+      "weights": "fold-1\\dual_gru_nb_rps.pt"
+    },
+    {
+      "fold": 2,
+      "model": "mlp_nb_nll",
+      "seed": 20261217,
+      "parameters": 666,
+      "best_epoch": 26,
+      "epochs_ran": 51,
+      "weights": "fold-2\\mlp_nb_nll.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_nb_nll",
+      "seed": 20261218,
+      "parameters": 5350,
+      "best_epoch": 36,
+      "epochs_ran": 61,
+      "weights": "fold-2\\dual_gru_nb_nll.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_nb_rps",
+      "seed": 20261219,
+      "parameters": 5350,
+      "best_epoch": 21,
+      "epochs_ran": 46,
+      "weights": "fold-2\\dual_gru_nb_rps.pt"
+    }
+  ],
+  "production_candidate": false,
+  "notes": [
+    "The experiment uses complete historical timestamps, not reconstructed point-in-time API visibility.",
+    "Training windows advance by 4/3 days; validation and final-test events do not overlap.",
+    "Every split boundary uses a seven-day embargo and model selection never reads final_test.",
+    "All neural models remain research-only and are not wired into the live monitor."
+  ]
+}

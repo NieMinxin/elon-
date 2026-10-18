@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "polymarket-threshold-bot"
+version = "0.1.0"
+description = "A risk-limited Polymarket threshold trading bot"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.27,<1",
+  "polymarket-client>=0.13,<0.14",
+  "pymysql>=1.1,<2",
+  "tzdata>=2025.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "ruff>=0.11,<1",
+]
+ml = [
+  "numpy>=1.26,<3",
+  "torch>=2.2,<3",
+]
+
+[project.scripts]
+polymarket-bot = "polymarket_bot.main:cli"
+elon-arb = "polymarket_bot.elon_main:cli"
+elon-data = "polymarket_bot.elon_data:cli"
+elon-model = "polymarket_bot.elon_model:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/polymarket_bot"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

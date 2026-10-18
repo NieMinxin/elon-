@@ -1,0 +1,500 @@
+{
+  "experiment": "gru_remaining_count_v4_deep_ensemble",
+  "created_at": "2026-10-17T16:37:00.623238+00:00",
+  "history_start": "2025-11-02T05:12:00+00:00",
+  "history_end": "2026-10-16T16:00:00+00:00",
+  "history_posts": 13490,
+  "event_slug": "elon-musk-of-tweets-october-16-october-23-2026",
+  "event_alignment": "2026-10-16T16:00:00+00:00",
+  "event_duration_hours": 168.0,
+  "interval_source": "config\\elon-musk-oct-16-23-2026-intervals.json",
+  "config": {
+    "pre_event_days": 28,
+    "observation_hours": [
+      0,
+      24,
+      42,
+      84,
+      126
+    ],
+    "training_observation_step_hours": 6,
+    "training_step_days": [
+      4,
+      3
+    ],
+    "folds": 3,
+    "evaluation_events_per_fold": 4,
+    "embargo_days": 7,
+    "hidden_size": 16,
+    "mixture_components": 2,
+    "max_remaining": 700,
+    "epochs": 180,
+    "patience": 25,
+    "batch_size": 64,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "rps_weight": 0.5,
+    "ensemble_members": 5,
+    "seed": 20261017
+  },
+  "device": "cuda",
+  "torch_version": "2.14.1+cu130",
+  "cuda_version": "13.0",
+  "cuda_device": "NVIDIA GeForce RTX 3060",
+  "folds": [
+    {
+      "fold": 0,
+      "train_label_cutoff": "2026-06-12T16:00:00+00:00",
+      "validation_starts": [
+        "2026-06-19T16:00:00+00:00",
+        "2026-06-26T16:00:00+00:00",
+        "2026-07-03T16:00:00+00:00",
+        "2026-07-10T16:00:00+00:00"
+      ],
+      "test_starts": [
+        "2026-07-24T16:00:00+00:00",
+        "2026-07-31T16:00:00+00:00",
+        "2026-08-07T16:00:00+00:00",
+        "2026-08-14T16:00:00+00:00"
+      ]
+    },
+    {
+      "fold": 1,
+      "train_label_cutoff": "2026-07-10T16:00:00+00:00",
+      "validation_starts": [
+        "2026-07-17T16:00:00+00:00",
+        "2026-07-24T16:00:00+00:00",
+        "2026-07-31T16:00:00+00:00",
+        "2026-08-07T16:00:00+00:00"
+      ],
+      "test_starts": [
+        "2026-08-21T16:00:00+00:00",
+        "2026-08-28T16:00:00+00:00",
+        "2026-09-04T16:00:00+00:00",
+        "2026-09-11T16:00:00+00:00"
+      ]
+    },
+    {
+      "fold": 2,
+      "train_label_cutoff": "2026-08-07T16:00:00+00:00",
+      "validation_starts": [
+        "2026-08-14T16:00:00+00:00",
+        "2026-08-21T16:00:00+00:00",
+        "2026-08-28T16:00:00+00:00",
+        "2026-09-04T16:00:00+00:00"
+      ],
+      "test_starts": [
+        "2026-09-18T16:00:00+00:00",
+        "2026-09-25T16:00:00+00:00",
+        "2026-10-02T16:00:00+00:00",
+        "2026-10-09T16:00:00+00:00"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "fold": 0,
+      "model": "dual_gru_nb_nll",
+      "seed": 20261017,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean"
+      },
+      "best_epoch": 10,
+      "epochs_ran": 35,
+      "weights": "fold-0\\dual_gru_nb_nll.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_dense_member_0",
+      "seed": 20271017,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 0
+      },
+      "best_epoch": 26,
+      "epochs_ran": 51,
+      "weights": "fold-0\\dual_gru_dense_member_0.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_dense_member_1",
+      "seed": 20271018,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 1
+      },
+      "best_epoch": 29,
+      "epochs_ran": 54,
+      "weights": "fold-0\\dual_gru_dense_member_1.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_dense_member_2",
+      "seed": 20271019,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 2
+      },
+      "best_epoch": 12,
+      "epochs_ran": 37,
+      "weights": "fold-0\\dual_gru_dense_member_2.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_dense_member_3",
+      "seed": 20271020,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 3
+      },
+      "best_epoch": 28,
+      "epochs_ran": 53,
+      "weights": "fold-0\\dual_gru_dense_member_3.pt"
+    },
+    {
+      "fold": 0,
+      "model": "dual_gru_dense_member_4",
+      "seed": 20271021,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 4
+      },
+      "best_epoch": 5,
+      "epochs_ran": 30,
+      "weights": "fold-0\\dual_gru_dense_member_4.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_nb_nll",
+      "seed": 20261117,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean"
+      },
+      "best_epoch": 20,
+      "epochs_ran": 45,
+      "weights": "fold-1\\dual_gru_nb_nll.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_dense_member_0",
+      "seed": 20271117,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 0
+      },
+      "best_epoch": 18,
+      "epochs_ran": 43,
+      "weights": "fold-1\\dual_gru_dense_member_0.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_dense_member_1",
+      "seed": 20271118,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 1
+      },
+      "best_epoch": 19,
+      "epochs_ran": 44,
+      "weights": "fold-1\\dual_gru_dense_member_1.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_dense_member_2",
+      "seed": 20271119,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 2
+      },
+      "best_epoch": 17,
+      "epochs_ran": 42,
+      "weights": "fold-1\\dual_gru_dense_member_2.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_dense_member_3",
+      "seed": 20271120,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 3
+      },
+      "best_epoch": 39,
+      "epochs_ran": 64,
+      "weights": "fold-1\\dual_gru_dense_member_3.pt"
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_dense_member_4",
+      "seed": 20271121,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 4
+      },
+      "best_epoch": 16,
+      "epochs_ran": 41,
+      "weights": "fold-1\\dual_gru_dense_member_4.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_nb_nll",
+      "seed": 20261217,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean"
+      },
+      "best_epoch": 11,
+      "epochs_ran": 36,
+      "weights": "fold-2\\dual_gru_nb_nll.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_dense_member_0",
+      "seed": 20271217,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 0
+      },
+      "best_epoch": 4,
+      "epochs_ran": 29,
+      "weights": "fold-2\\dual_gru_dense_member_0.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_dense_member_1",
+      "seed": 20271218,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 1
+      },
+      "best_epoch": 10,
+      "epochs_ran": 35,
+      "weights": "fold-2\\dual_gru_dense_member_1.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_dense_member_2",
+      "seed": 20271219,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 2
+      },
+      "best_epoch": 7,
+      "epochs_ran": 32,
+      "weights": "fold-2\\dual_gru_dense_member_2.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_dense_member_3",
+      "seed": 20271220,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 3
+      },
+      "best_epoch": 10,
+      "epochs_ran": 35,
+      "weights": "fold-2\\dual_gru_dense_member_3.pt"
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_dense_member_4",
+      "seed": 20271221,
+      "parameters": 5350,
+      "architecture": {
+        "pre_history_resolution": "hourly",
+        "component_initialization": "symmetric",
+        "rps_reduction": "mean",
+        "ensemble_member": 4
+      },
+      "best_epoch": 6,
+      "epochs_ran": 31,
+      "weights": "fold-2\\dual_gru_dense_member_4.pt"
+    }
+  ],
+  "calibration": [
+    {
+      "fold": 0,
+      "model": "dual_gru_dense_ensemble_calibrated",
+      "selected_temperature": 0.75,
+      "validation_scores": [
+        {
+          "temperature": 0.75,
+          "validation_log_loss": 1.6809837016355893
+        },
+        {
+          "temperature": 0.9,
+          "validation_log_loss": 1.7322666101468518
+        },
+        {
+          "temperature": 1.0,
+          "validation_log_loss": 1.7669320944084315
+        },
+        {
+          "temperature": 1.1,
+          "validation_log_loss": 1.8011732083362328
+        },
+        {
+          "temperature": 1.25,
+          "validation_log_loss": 1.8510353827486576
+        },
+        {
+          "temperature": 1.5,
+          "validation_log_loss": 1.9290981799783034
+        },
+        {
+          "temperature": 2.0,
+          "validation_log_loss": 2.0659710467948313
+        }
+      ],
+      "members": [
+        "dual_gru_dense_member_0",
+        "dual_gru_dense_member_1",
+        "dual_gru_dense_member_2",
+        "dual_gru_dense_member_3",
+        "dual_gru_dense_member_4"
+      ]
+    },
+    {
+      "fold": 1,
+      "model": "dual_gru_dense_ensemble_calibrated",
+      "selected_temperature": 0.75,
+      "validation_scores": [
+        {
+          "temperature": 0.75,
+          "validation_log_loss": 1.5806030339615884
+        },
+        {
+          "temperature": 0.9,
+          "validation_log_loss": 1.6545472677981152
+        },
+        {
+          "temperature": 1.0,
+          "validation_log_loss": 1.6993298585729844
+        },
+        {
+          "temperature": 1.1,
+          "validation_log_loss": 1.7409995996965353
+        },
+        {
+          "temperature": 1.25,
+          "validation_log_loss": 1.7984670384765977
+        },
+        {
+          "temperature": 1.5,
+          "validation_log_loss": 1.8832395390496839
+        },
+        {
+          "temperature": 2.0,
+          "validation_log_loss": 2.022753486361497
+        }
+      ],
+      "members": [
+        "dual_gru_dense_member_0",
+        "dual_gru_dense_member_1",
+        "dual_gru_dense_member_2",
+        "dual_gru_dense_member_3",
+        "dual_gru_dense_member_4"
+      ]
+    },
+    {
+      "fold": 2,
+      "model": "dual_gru_dense_ensemble_calibrated",
+      "selected_temperature": 1.1,
+      "validation_scores": [
+        {
+          "temperature": 0.75,
+          "validation_log_loss": 2.3878920288480723
+        },
+        {
+          "temperature": 0.9,
+          "validation_log_loss": 2.3591066500650797
+        },
+        {
+          "temperature": 1.0,
+          "validation_log_loss": 2.351963445640128
+        },
+        {
+          "temperature": 1.1,
+          "validation_log_loss": 2.3508354123309623
+        },
+        {
+          "temperature": 1.25,
+          "validation_log_loss": 2.3565282211569363
+        },
+        {
+          "temperature": 1.5,
+          "validation_log_loss": 2.377286988553066
+        },
+        {
+          "temperature": 2.0,
+          "validation_log_loss": 2.4351959165052373
+        }
+      ],
+      "members": [
+        "dual_gru_dense_member_0",
+        "dual_gru_dense_member_1",
+        "dual_gru_dense_member_2",
+        "dual_gru_dense_member_3",
+        "dual_gru_dense_member_4"
+      ]
+    }
+  ],
+  "production_candidate": false,
+  "notes": [
+    "The experiment uses complete historical timestamps, not reconstructed point-in-time API visibility.",
+    "Training windows advance by 4/3 days; validation and final-test events do not overlap.",
+    "Every split boundary uses a seven-day embargo and model selection never reads final_test.",
+    "All neural models remain research-only and are not wired into the live monitor.",
+    "Training events use dense observation checkpoints while validation and final-test events retain the configured evaluation checkpoints; every event still has total sample weight one.",
+    "V4 averages five independently initialized dense hourly GRUs and selects one PMF temperature per fold using validation interval log loss only."
+  ]
+}
